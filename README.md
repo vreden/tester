@@ -139,21 +139,199 @@ sock.ev.on('messages.update', (m) => {
 ---
 
 ### 📨 Sending Messages
+
 <details>
-<summary><strong>📝 Text Message</strong></summary>
+<summary><strong>📝 Text Message (Basic + Link Preview)</strong></summary>
 
 ```javascript
+// Simple text
 await sock.sendMessage(jid, { text: 'Hello!' });
+
+// Text with link preview
+await sock.sendMessage(jid, {
+  text: 'Visit https://example.com',
+  linkPreview: {
+    'canonical-url': 'https://example.com',
+    title: 'Example Domain',
+    description: 'A demo website',
+    jpegThumbnail: fs.readFileSync('preview.jpg')
+  }
+});
 ```
 </details>
+
+---
 
 <details>
 <summary><strong>🖼️ Image Message</strong></summary>
 
 ```javascript
+// With local file buffer
 await sock.sendMessage(jid, { 
   image: fs.readFileSync('image.jpg'),
-  caption: 'Check this out!'
+  caption: 'My cat!',
+  mentions: ['1234567890@s.whatsapp.net'] // Tag users
+});
+
+// With URL
+await sock.sendMessage(jid, { 
+  image: { url: 'https://example.com/image.jpg' },
+  caption: 'Downloaded image'
+});
+```
+</details>
+
+---
+
+<details>
+<summary><strong>🎥 Video Message</strong></summary>
+
+```javascript
+// With local file
+await sock.sendMessage(jid, { 
+  video: fs.readFileSync('video.mp4'),
+  caption: 'Funny clip!'
+});
+
+// With URL
+await sock.sendMessage(jid, { 
+  video: { url: 'https://example.com/video.mp4' },
+  caption: 'Streamed video'
+});
+
+// With view-once
+await sock.sendMessage(jid, {
+  video: fs.readFileSync('secret.mp4'),
+  viewOnce: true // Disappears after viewing
+});
+```
+</details>
+
+---
+
+<details>
+<summary><strong>🎵 Audio/PTT Message</strong></summary>
+
+```javascript
+// Regular audio
+await sock.sendMessage(jid, { 
+  audio: fs.readFileSync('audio.mp3'),
+  ptt: false // For music
+});
+
+// Push-to-talk (PTT)
+await sock.sendMessage(jid, { 
+  audio: fs.readFileSync('voice.ogg'),
+  ptt: true, // WhatsApp voice note
+  waveform: [0, 1, 0, 1, 0] // Optional waveform
+});
+```
+</details>
+
+---
+
+<details>
+<summary><strong>📍 Location Message</strong></summary>
+
+```javascript
+// Static location
+await sock.sendMessage(jid, {
+  location: {
+    degreesLatitude: 37.422,
+    degreesLongitude: -122.084,
+    name: 'Google HQ'
+  }
+});
+
+// Live location (updates in real-time)
+await sock.sendMessage(jid, {
+  location: {
+    degreesLatitude: 37.422,
+    degreesLongitude: -122.084,
+    accuracyInMeters: 10
+  },
+  live: true, // Enable live tracking
+  caption: 'I’m here!'
+});
+```
+</details>
+
+---
+
+<details>
+<summary><strong>📊 Poll Message</strong></summary>
+
+```javascript
+// Create a poll
+await sock.sendMessage(jid, {
+  poll: {
+    name: 'Favorite color?',
+    values: ['Red', 'Blue', 'Green'],
+    selectableCount: 1 // Single-choice
+  }
+});
+
+// Poll results
+await sock.sendMessage(jid, {
+  pollResult: {
+    name: 'Favorite color?',
+    values: [['Red', 10], ['Blue', 20]] // [option, votes]
+  }
+});
+```
+</details>
+
+---
+
+<details>
+<summary><strong>🛒 Product Message</strong></summary>
+
+```javascript
+// Product listing
+await sock.sendMessage(jid, {
+  product: {
+    productId: '123',
+    title: 'Cool T-Shirt',
+    description: '100% cotton',
+    price: 1999, // In cents (e.g., $19.99)
+    currencyCode: 'USD',
+    productImage: fs.readFileSync('shirt.jpg')
+  }
+});
+```
+</details>
+
+---
+
+<details>
+<summary><strong>🎭 Buttons Messages</strong></summary>
+
+```javascript
+// Button message (Basic)
+await sock.sendMessage(jid, {
+  text: 'Choose an option:',
+  buttons: [
+    { buttonId: 'id1', buttonText: { displayText: 'Option 1' } },
+    { buttonId: 'id2', buttonText: { displayText: 'Option 2' } }
+  ],
+  footer: '© WhatsApp Baileys'
+});
+```
+
+<details>
+<summary><strong>🎭 List Messages </strong></summary>
+
+```javascript
+// List message
+await sock.sendMessage(jid, {
+  text: 'Menu:',
+  sections: [
+    { title: 'Food', rows: [
+      { title: 'Pizza', rowId: 'pizza' },
+      { title: 'Burger', rowId: 'burger' }
+    ]}
+  ],
+  buttonText: 'Browse'
 });
 ```
 </details>
