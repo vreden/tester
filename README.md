@@ -17,7 +17,7 @@
   </p>
 </div>
 
----
+<br>
 
 ## 📚 Table of Contents  
 - [Features](#-features)  
@@ -32,7 +32,7 @@
   - [Advanced](#-advanced)  
 - [Disclaimer](#-disclaimer)  
 
----
+<br>
 
 ## 🌟 Features
 - ✅ **Multi-Device Support**  
@@ -41,7 +41,7 @@
 - 🔒 **End-to-End Encryption**  
 - 📦 **Session Persistence**  
 
----
+<br>
 
 ## 📥 Installation
 ```bash
@@ -50,7 +50,7 @@ npm install @vreden/meta
 yarn add @vreden/meta
 ```
 
----
+<br>
 
 ## 🚀 Quick Start
 ```javascript
@@ -60,8 +60,8 @@ const {
 } = require('@vreden/meta');
 
 const {
-	state,
-	saveCreds
+  state,
+  saveCreds
 } = await useMultiFileAuthState("./path/to/sessions/folder")
 
 /*
@@ -75,7 +75,7 @@ sock.ev.on('messages.upsert', ({ messages }) => {
 });
 ```
 
----
+<br>
 
 ## 📖 Documentation
 
@@ -114,7 +114,7 @@ if (!sock.authState.creds.registered) {
 ```
 </details>
 
----
+<br>
 
 ### 📡 Handling Events
 <details>
@@ -137,7 +137,7 @@ sock.ev.on('messages.update', (m) => {
 ```
 </details>
 
----
+<br>
 
 ### 📨 Sending Messages
 
@@ -331,6 +331,8 @@ await sock.sendMessage(jid, {
 <details>
 <summary><strong>🎭 Buttons Messages</strong></summary>
 
+<details>
+<summary><strong>Headers Type</strong></summary>
 ```javascript
 // Button Headers Text
 await sock.sendMessage(jid, {
@@ -341,7 +343,7 @@ await sock.sendMessage(jid, {
 ```
 
 ```javascript
-// Button Image
+// Button Headers Image
 await sock.sendMessage(jid, {
   image: fs.readFileSync('image.jpg'),
   caption: 'Choose an option:',
@@ -351,7 +353,7 @@ await sock.sendMessage(jid, {
 ```
 
 ```javascript
-// Button Video
+// Button Headers Video
 await sock.sendMessage(jid, {
   video: fs.readFileSync('video.mp4'),
   caption: 'Choose an option:',
@@ -361,7 +363,7 @@ await sock.sendMessage(jid, {
 ```
 
 ```javascript
-// Button Location
+// Button Headers Location
 await sock.sendMessage(jid, {
   location: {
     degreesLatitude: 37.422,
@@ -372,7 +374,10 @@ await sock.sendMessage(jid, {
   footer: '© WhatsApp Baileys'
 });
 ```
+</details>
 
+<details>
+<summary><strong>Button Params</strong></summary>
 ```javascript
 // Button Params Default
 const buttonParams = [{
@@ -415,6 +420,7 @@ const buttonParams = [{
 }]
 ```
 </details>
+</details>
 
 <details>
 <summary><strong>🎭 List Messages </strong></summary>
@@ -452,7 +458,7 @@ await sock.sendMessage(jid, {
 ```
 </details>
 
----
+<br>
 
 ### 🛠️ Groups
 <details>
@@ -471,7 +477,7 @@ await sock.groupSettingUpdate(jid, 'announcement'); // Admins only
 ```
 </details>
 
----
+<br>
 
 ### 🔒 Privacy
 <details>
@@ -482,7 +488,7 @@ await sock.updateBlockStatus(jid, 'block'); // or 'unblock'
 ```
 </details>
 
----
+<br>
 
 ### ⚙️ Advanced
 <details>
@@ -501,13 +507,13 @@ sock.ws.on('CB:presence', (json) => console.log('Presence update:', json));
 ```
 </details>
 
----
+<br>
 
 ## ⚠️ Disclaimer
 This project is **not affiliated** with WhatsApp/Meta. Use at your own risk.  
 Refer to [WhatsApp's Terms](https://www.whatsapp.com/legal) for compliance.
 
----
+<br>
 
 ### 🔗 Full Documentation
 Explore all features in the **[Baileys GitHub Wiki](https://github.com/whiskeysockets/baileys/wiki)**
