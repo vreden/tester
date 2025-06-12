@@ -140,14 +140,24 @@ sock.ev.on('messages.update', (m) => {
 
 ### 📨 Sending Messages
 
+```javascript
+const jid: string
+const content: AnyMessageContent
+const options: MiscMessageGenerationOptions
+
+sock.sendMessage(jid, content, options)
+```
+
 <details>
 <summary><strong>📝 Text Message (Basic + Link Preview)</strong></summary>
 
+<small>Simple Text</small>
 ```javascript
-// Simple text
 await sock.sendMessage(jid, { text: 'Hello!' });
+```
 
-// Text with link preview
+<small>Text with link preview</small>
+```javascript
 await sock.sendMessage(jid, {
   text: 'Visit https://example.com',
   linkPreview: {
@@ -158,9 +168,13 @@ await sock.sendMessage(jid, {
   }
 });
 ```
+
+<small>With Quoted Reply</small>
+```javascript
+await sock.sendMessage(jid, { text: 'Hello!' }, { quoted: message });
+```
 </details>
 
----
 
 <details>
 <summary><strong>🖼️ Image Message</strong></summary>
@@ -186,20 +200,24 @@ await sock.sendMessage(jid, {
 <details>
 <summary><strong>🎥 Video Message</strong></summary>
 
+<small>With Local File</small>
 ```javascript
-// With local file
 await sock.sendMessage(jid, { 
   video: fs.readFileSync('video.mp4'),
   caption: 'Funny clip!'
 });
+```
 
-// With URL
+<small>With URL File</small>
+```javascript
 await sock.sendMessage(jid, { 
   video: { url: 'https://example.com/video.mp4' },
   caption: 'Streamed video'
 });
+```
 
-// With view-once
+<small>View Once Message</small>
+```javascript
 await sock.sendMessage(jid, {
   video: fs.readFileSync('secret.mp4'),
   viewOnce: true // Disappears after viewing
@@ -207,19 +225,18 @@ await sock.sendMessage(jid, {
 ```
 </details>
 
----
-
 <details>
 <summary><strong>🎵 Audio/PTT Message</strong></summary>
 
+<small>Regular audio</small>
 ```javascript
-// Regular audio
 await sock.sendMessage(jid, { 
   audio: fs.readFileSync('audio.mp3'),
   ptt: false // For music
 });
 
-// Push-to-talk (PTT)
+<small>Push-to-talk (PTT)</small>
+```javascript
 await sock.sendMessage(jid, { 
   audio: fs.readFileSync('voice.ogg'),
   ptt: true, // WhatsApp voice note
@@ -228,13 +245,11 @@ await sock.sendMessage(jid, {
 ```
 </details>
 
----
-
 <details>
 <summary><strong>📍 Location Message</strong></summary>
 
+<small>Static location</small>
 ```javascript
-// Static location
 await sock.sendMessage(jid, {
   location: {
     degreesLatitude: 37.422,
@@ -242,8 +257,22 @@ await sock.sendMessage(jid, {
     name: 'Google HQ'
   }
 });
+```
 
-// Live location (updates in real-time)
+<small>Thumbnail location</small>
+```javascript
+await sock.sendMessage(jid, {
+  location: {
+    degreesLatitude: 37.422,
+    degreesLongitude: -122.084,
+    name: 'Google HQ',
+    jpegThumbnail: fs.readFileSync('preview.jpg')
+  }
+});
+```
+
+<small>Live location (updates in real-time)</small>
+```javascript
 await sock.sendMessage(jid, {
   location: {
     degreesLatitude: 37.422,
@@ -256,13 +285,11 @@ await sock.sendMessage(jid, {
 ```
 </details>
 
----
-
 <details>
 <summary><strong>📊 Poll Message</strong></summary>
 
+<small>Create a poll</small>
 ```javascript
-// Create a poll
 await sock.sendMessage(jid, {
   poll: {
     name: 'Favorite color?',
@@ -270,8 +297,10 @@ await sock.sendMessage(jid, {
     selectableCount: 1 // Single-choice
   }
 });
+```
 
-// Poll results
+<small>Poll results</small>
+```javascript
 await sock.sendMessage(jid, {
   pollResult: {
     name: 'Favorite color?',
@@ -281,13 +310,10 @@ await sock.sendMessage(jid, {
 ```
 </details>
 
----
-
 <details>
 <summary><strong>🛒 Product Message</strong></summary>
 
 ```javascript
-// Product listing
 await sock.sendMessage(jid, {
   product: {
     productId: '123',
@@ -301,28 +327,99 @@ await sock.sendMessage(jid, {
 ```
 </details>
 
----
-
 <details>
 <summary><strong>🎭 Buttons Messages</strong></summary>
 
+<small>Button Text</small>
 ```javascript
-// Button message (Basic)
 await sock.sendMessage(jid, {
   text: 'Choose an option:',
-  buttons: [
-    { buttonId: 'id1', buttonText: { displayText: 'Option 1' } },
-    { buttonId: 'id2', buttonText: { displayText: 'Option 2' } }
-  ],
+  buttons: buttonParams,
   footer: '© WhatsApp Baileys'
 });
 ```
 
+<small>Button Image</small>
+```javascript
+await sock.sendMessage(jid, {
+  image: fs.readFileSync('image.jpg'),
+  caption: 'Choose an option:',
+  buttons: buttonParams,
+  footer: '© WhatsApp Baileys'
+});
+```
+
+<small>Button Video</small>
+```javascript
+await sock.sendMessage(jid, {
+  video: fs.readFileSync('video.mp4'),
+  caption: 'Choose an option:',
+  buttons: buttonParams,
+  footer: '© WhatsApp Baileys'
+});
+```
+
+<small>Button Location</small>
+```javascript
+await sock.sendMessage(jid, {
+  location: {
+    degreesLatitude: 37.422,
+    degreesLongitude: -122.084
+  },
+  caption: 'Choose an option:',
+  buttons: buttonParams,
+  footer: '© WhatsApp Baileys'
+});
+```
+
+<small>Button Params Default</small>
+```javascript
+const buttonParams = [{
+  buttonId: 'id1',
+  buttonText: {
+    displayText: 'Option 1'
+  },
+  type: 1
+},{
+  buttonId: 'id2',
+  buttonText: {
+    displayText: 'Option 2'
+  },
+  type: 1
+}]
+```
+
+<small>Button Params NativeFlow</small>
+```javascript
+const buttonParams = [{
+  buttonId: 'id1',
+  buttonText: {
+    displayText: 'Option 1'
+  },
+  type: 1
+},{
+  buttonId: 'flow',
+  buttonText: {
+    displayText: 'flow'
+  },
+  nativeFlowInfo: {
+    name: 'cta_url',
+    buttonParamsJson: JSON.stringify({
+      display_text: 'Visit URL',
+      url: 'https://web.whatsapp.com',
+      merchant_url: 'https://web.whatsapp.com'
+    })
+  },
+  type: 2
+}]
+```
+</details>
+
 <details>
 <summary><strong>🎭 List Messages </strong></summary>
 
+<small>Single Select</small>
 ```javascript
-// List message
 await sock.sendMessage(jid, {
   text: 'Menu:',
   sections: [
@@ -333,6 +430,24 @@ await sock.sendMessage(jid, {
   ],
   buttonText: 'Browse'
 });
+```
+
+<small>Product List</small>
+```javascript
+await sock.sendMessage(jid, {
+  title: 'Here is title product',
+  text: 'Text message',
+  footer: '© WhatsApp Baileys',
+  buttonText: 'Select Menu', 
+  productList: [{
+    title: 'Product Collection', 
+    products: [{
+      productId: '23942543532047956' // catalog business ID
+    }]
+  }], 
+  businessOwnerJid: '6285643115199@s.whatsapp.net',
+  thumbnail: { url: 'https://www.example.com/file' }
+})
 ```
 </details>
 
