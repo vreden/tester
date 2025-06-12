@@ -1,6 +1,7 @@
-<div align="center">  
-  <h1>WhatsApp Baileys</h1>
+<div align="center">
   <img src="https://scontent.fcbn3-1.fna.fbcdn.net/v/t39.8562-6/452878089_796193915665714_3806248071587628833_n.png?_nc_cat=103&ccb=1-7&_nc_sid=f537c7&_nc_ohc=CAPU1tY4MikQ7kNvwHxEd0E&_nc_oc=AdlGnQ-FLrdA6yhuhZkLRk39gRJVkSVKZYy3BfPrLroAir1Kku5hdBXcuowteYWaBtw&_nc_zt=14&_nc_ht=scontent.fcbn3-1.fna&_nc_gid=wOz5wqoBWm7sLPBhYHUUdQ&oh=00_AfPIJz04K7vx7KumOI_HEb9XadrwnmnFk8nbTgEyX5zYFA&oe=68509A22" alt="WhatsApp Baileys" width="600"/>  
+
+  <h1>WhatsApp Baileys</h1>
   <p><strong>Lightweight, Full-Featured WhatsApp Web for Node.js</strong></p>
   
   <p>
@@ -149,15 +150,15 @@ sock.sendMessage(jid, content, options)
 ```
 
 <details>
-<summary><strong>📝 Text Message (Basic + Link Preview)</strong></summary>
+<summary><strong>📝 Text Message</strong></summary>
 
-<small>Simple Text</small>
 ```javascript
+// Simple Text
 await sock.sendMessage(jid, { text: 'Hello!' });
 ```
 
-<small>Text with link preview</small>
 ```javascript
+// Text with link preview
 await sock.sendMessage(jid, {
   text: 'Visit https://example.com',
   linkPreview: {
@@ -169,8 +170,8 @@ await sock.sendMessage(jid, {
 });
 ```
 
-<small>With Quoted Reply</small>
 ```javascript
+// With Quoted Reply
 await sock.sendMessage(jid, { text: 'Hello!' }, { quoted: message });
 ```
 </details>
@@ -186,7 +187,9 @@ await sock.sendMessage(jid, {
   caption: 'My cat!',
   mentions: ['1234567890@s.whatsapp.net'] // Tag users
 });
+```
 
+```javascript
 // With URL
 await sock.sendMessage(jid, { 
   image: { url: 'https://example.com/image.jpg' },
@@ -195,29 +198,27 @@ await sock.sendMessage(jid, {
 ```
 </details>
 
----
-
 <details>
 <summary><strong>🎥 Video Message</strong></summary>
 
-<small>With Local File</small>
 ```javascript
+// With Local File
 await sock.sendMessage(jid, { 
   video: fs.readFileSync('video.mp4'),
   caption: 'Funny clip!'
 });
 ```
 
-<small>With URL File</small>
 ```javascript
+// With URL File
 await sock.sendMessage(jid, { 
   video: { url: 'https://example.com/video.mp4' },
   caption: 'Streamed video'
 });
 ```
 
-<small>View Once Message</small>
 ```javascript
+// View Once Message
 await sock.sendMessage(jid, {
   video: fs.readFileSync('secret.mp4'),
   viewOnce: true // Disappears after viewing
@@ -228,15 +229,15 @@ await sock.sendMessage(jid, {
 <details>
 <summary><strong>🎵 Audio/PTT Message</strong></summary>
 
-<small>Regular audio</small>
 ```javascript
+// Regular audio
 await sock.sendMessage(jid, { 
   audio: fs.readFileSync('audio.mp3'),
   ptt: false // For music
 });
 
-<small>Push-to-talk (PTT)</small>
 ```javascript
+// Push-to-talk (PTT)
 await sock.sendMessage(jid, { 
   audio: fs.readFileSync('voice.ogg'),
   ptt: true, // WhatsApp voice note
@@ -248,8 +249,8 @@ await sock.sendMessage(jid, {
 <details>
 <summary><strong>📍 Location Message</strong></summary>
 
-<small>Static location</small>
 ```javascript
+// Static location
 await sock.sendMessage(jid, {
   location: {
     degreesLatitude: 37.422,
@@ -259,8 +260,8 @@ await sock.sendMessage(jid, {
 });
 ```
 
-<small>Thumbnail location</small>
 ```javascript
+// Thumbnail location
 await sock.sendMessage(jid, {
   location: {
     degreesLatitude: 37.422,
@@ -271,8 +272,8 @@ await sock.sendMessage(jid, {
 });
 ```
 
-<small>Live location (updates in real-time)</small>
 ```javascript
+// Live location (updates in real-time)
 await sock.sendMessage(jid, {
   location: {
     degreesLatitude: 37.422,
@@ -288,8 +289,8 @@ await sock.sendMessage(jid, {
 <details>
 <summary><strong>📊 Poll Message</strong></summary>
 
-<small>Create a poll</small>
 ```javascript
+// Create a poll
 await sock.sendMessage(jid, {
   poll: {
     name: 'Favorite color?',
@@ -299,8 +300,8 @@ await sock.sendMessage(jid, {
 });
 ```
 
-<small>Poll results</small>
 ```javascript
+// Poll results (snapshot)
 await sock.sendMessage(jid, {
   pollResult: {
     name: 'Favorite color?',
@@ -330,8 +331,8 @@ await sock.sendMessage(jid, {
 <details>
 <summary><strong>🎭 Buttons Messages</strong></summary>
 
-<small>Button Text</small>
 ```javascript
+// Button Headers Text
 await sock.sendMessage(jid, {
   text: 'Choose an option:',
   buttons: buttonParams,
@@ -339,8 +340,8 @@ await sock.sendMessage(jid, {
 });
 ```
 
-<small>Button Image</small>
 ```javascript
+// Button Image
 await sock.sendMessage(jid, {
   image: fs.readFileSync('image.jpg'),
   caption: 'Choose an option:',
@@ -349,8 +350,8 @@ await sock.sendMessage(jid, {
 });
 ```
 
-<small>Button Video</small>
 ```javascript
+// Button Video
 await sock.sendMessage(jid, {
   video: fs.readFileSync('video.mp4'),
   caption: 'Choose an option:',
@@ -359,8 +360,8 @@ await sock.sendMessage(jid, {
 });
 ```
 
-<small>Button Location</small>
 ```javascript
+// Button Location
 await sock.sendMessage(jid, {
   location: {
     degreesLatitude: 37.422,
@@ -372,8 +373,8 @@ await sock.sendMessage(jid, {
 });
 ```
 
-<small>Button Params Default</small>
 ```javascript
+// Button Params Default
 const buttonParams = [{
   buttonId: 'id1',
   buttonText: {
@@ -389,8 +390,8 @@ const buttonParams = [{
 }]
 ```
 
-<small>Button Params NativeFlow</small>
 ```javascript
+// Button Params NativeFlow
 const buttonParams = [{
   buttonId: 'id1',
   buttonText: {
@@ -418,8 +419,8 @@ const buttonParams = [{
 <details>
 <summary><strong>🎭 List Messages </strong></summary>
 
-<small>Single Select</small>
 ```javascript
+// Single Select
 await sock.sendMessage(jid, {
   text: 'Menu:',
   sections: [
@@ -432,8 +433,8 @@ await sock.sendMessage(jid, {
 });
 ```
 
-<small>Product List</small>
 ```javascript
+// Product List
 await sock.sendMessage(jid, {
   title: 'Here is title product',
   text: 'Text message',
