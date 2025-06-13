@@ -453,6 +453,11 @@ await sock.sendMessage(jid, {
 <details>
 <summary><strong>🎭 Buttons Messages</strong></summary>
 
+<br>
+
+> [!IMPORTANT]
+> This message button may not work if WhatsApp prohibits the free and open use of the message button. Use a WhatsApp partner if you still want to use the message button.
+
 <details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Headers Type</strong></summary>
 
