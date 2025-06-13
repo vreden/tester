@@ -453,8 +453,8 @@ await sock.sendMessage(jid, {
 <details>
 <summary><strong>🎭 Buttons Messages</strong></summary>
 
-    - <details>
-<summary><strong>Headers Type</strong></summary>
+<details>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Headers Type</strong></summary>
 
 ```javascript
 // Button Headers Text
@@ -499,8 +499,8 @@ await sock.sendMessage(jid, {
 ```
 </details>
 
-    - <details>
-<summary><strong>Button Params</strong></summary>
+<details>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Button Params</strong></summary>
 
 ```javascript
 // Button Params Default
