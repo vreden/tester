@@ -235,6 +235,7 @@ await sock.sendMessage(jid, {
   audio: fs.readFileSync('audio.mp3'),
   ptt: false // For music
 });
+```
 
 ```javascript
 // Push-to-talk (PTT)
@@ -243,6 +244,70 @@ await sock.sendMessage(jid, {
   ptt: true, // WhatsApp voice note
   waveform: [0, 1, 0, 1, 0] // Optional waveform
 });
+```
+</details>
+
+<details>
+<summary><strong>👤 Contact Message</strong></summary>
+
+```javascript
+const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
+  + 'VERSION:3.0\n' 
+  + 'FN:Jeff Singh\n' // full name
+  + 'ORG:Ashoka Uni\n' // the organization of the contact
+  + 'TELtype=CELLtype=VOICEwaid=911234567890:+91 12345 67890\n' // WhatsApp ID + phone number
+  + 'END:VCARD'
+
+await sock.sendMessage(jid, { 
+  contacts: { 
+    displayName: 'Your Name', 
+    contacts: [{ vcard }] 
+  }
+})
+```
+</details>
+
+<details>
+<summary><strong>💥 React Message</strong></summary>
+
+```javascript
+await sock.sendMessage(jid, {
+  react: {
+    text: '👍', // use an empty string to remove the reaction
+    key: message.key
+  }
+})
+```
+</details>
+
+<details>
+<summary><strong>📌 Pin & Keep Message</strong></summary>
+
+| Time  | Seconds        |
+|-------|----------------|
+| 24h    | 86.400        |
+| 7d     | 604.800       |
+| 30d    | 2.592.000     |
+
+```javascript
+// Pin Message
+await sock.sendMessage(jid, {
+  pin: {
+    type: 1, // 2 to remove
+    time: 86400,
+    key: message.key
+  }
+})
+```
+
+```javascript
+// Keep message
+await sock.sendMessage(jid, {
+  keep: {
+    key: message.key,
+    type: 1 // or 2 to remove
+  }
+})
 ```
 </details>
 
@@ -287,6 +352,63 @@ await sock.sendMessage(jid, {
 </details>
 
 <details>
+<summary><strong>📞 Call Message</strong></summary>
+
+```javascript
+await sock.sendMessage(jid, {
+  call: {
+    name: 'Here is call message',
+    type: 1 // 2 for video
+  }
+})
+```
+</details>
+
+<details>
+<summary><strong>🗓️ Event Message</strong></summary>
+
+```javascript
+await sock.sendMessage(jid, {
+  event: {
+    isCanceled: false, // or true
+    name: 'Here is name event',
+    description: 'Short description here',
+    location: {
+      degreesLatitude: 0,
+      degreesLongitude: 0,
+      name: 'Gedung Tikus Kantor'
+    },
+    startTime: 17..., // timestamp date
+    endTime: 17..., // timestamp date
+    extraGuestsAllowed: true // or false
+  }
+})
+```
+</details>
+
+<details>
+<summary><strong>🛒 Order Message</strong></summary>
+
+```javascript
+await sock.sendMessage(jid, {
+  order: {
+    orderId: '123xxx',
+    thumbnail: fs.readFileSync('preview.jpg'),
+    itemCount: '123',
+    status: 'INQUIRY', // INQUIRY || ACCEPTED || DECLINED
+    surface: 'CATALOG',
+    message: 'Here is order message',
+    orderTitle: 'Here is title order',
+    sellerJid: '628xxx@s.whatsapp.net'',
+    token: 'token_here',
+    totalAmount1000: '300000',
+    totalCurrencyCode: 'IDR'
+  }
+})
+```
+</details>
+
+<details>
 <summary><strong>📊 Poll Message</strong></summary>
 
 ```javascript
@@ -312,7 +434,7 @@ await sock.sendMessage(jid, {
 </details>
 
 <details>
-<summary><strong>🛒 Product Message</strong></summary>
+<summary><strong>🛍️ Product Message</strong></summary>
 
 ```javascript
 await sock.sendMessage(jid, {
@@ -331,8 +453,9 @@ await sock.sendMessage(jid, {
 <details>
 <summary><strong>🎭 Buttons Messages</strong></summary>
 
-<details>
+    - <details>
 <summary><strong>Headers Type</strong></summary>
+
 ```javascript
 // Button Headers Text
 await sock.sendMessage(jid, {
@@ -376,8 +499,9 @@ await sock.sendMessage(jid, {
 ```
 </details>
 
-<details>
+    - <details>
 <summary><strong>Button Params</strong></summary>
+
 ```javascript
 // Button Params Default
 const buttonParams = [{
