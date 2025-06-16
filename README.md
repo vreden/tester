@@ -142,10 +142,27 @@ sock.ev.on('messages.update', (m) => {
 ### 📨 Sending Messages
 
 ```javascript
-const jid: string
-const content: AnyMessageContent
-const options: MiscMessageGenerationOptions
+/**
+ * Sends a message using the WhatsApp socket connection.
+ * 
+ * @param {string} jid - The JID (Jabber ID) of the recipient/user.
+ *                       This is the unique identifier for the WhatsApp user/group.
+ * @param {Object} content - The message content to be sent. Can be any valid message type
+ *                           (text, image, video, document, etc.) with required parameters.
+ * @param {Object} [options] - Optional parameters for message generation and sending.
+ *                             Can include properties like:
+ *                             - quoted: Message to reply to
+ *                             - ephemeral: If message should disappear after viewing
+ *                             - mediaUpload: Media upload options
+ *                             - etc.
+ * @returns {Promise<Object>} A promise that resolves with the sent message info or
+ *                            rejects with an error if sending fails.
+ */
+const jid = '';        // Recipient's JID (WhatsApp ID) or LID
+const content = {};     // Message content object
+const options = {};     // Optional message options
 
+// Send the message using the WhatsApp socket connection
 sock.sendMessage(jid, content, options)
 ```
 
@@ -632,6 +649,142 @@ await sock.sendAlbumMessage(jid,
 </details>
 
 <details>
+<summary><strong>👨‍💻 Interactive Message</strong></summary>
+
+> ⚠️ **WARNING**
+<br>
+> This is an interactive chat created based on Proto WhatsApp business data, if the message does not work then there may be a change in the buttonParamsJson structure.
+
+<details>
+<summary><strong>Shop Flow Message</strong></summary>
+```javascript
+// Headers Text
+await sock.sendMessage(jid, {      
+  text: 'Here is body message',
+  title: 'Here is title', 
+  subtitle: 'Here is subtitle', 
+  footer: '© WhatsApp Baileys',
+  viewOnce: true,
+  shop: {
+    surface: 1, // 2 | 3 | 4
+    id: 'facebook_store_name'
+  }
+})
+```
+
+```javascript
+// Headers Image
+await sock.sendMessage(jid, { 
+  image: {
+    url: 'https://www.example.com/image.jpg'
+  },    
+  caption: 'Here is body message',
+  title: 'Here is title', 
+  subtitle: 'Here is subtitle', 
+  footer: '© WhatsApp Baileys',
+  shop: {
+    surface: 1, // 2 | 3 | 4
+    id: 'facebook_store_name'
+  }, 
+  hasMediaAttachment: true, // or false
+  viewOnce: true
+})
+```
+
+```javascript
+// Headers Video
+await sock.sendMessage(jid, { 
+  video: {
+    url: 'https://www.example.com/video.mp4'
+  },    
+  caption: 'Here is body message',
+  title: 'Here is title', 
+  subtitle: 'Here is subtitle', 
+  footer: '© WhatsApp Baileys',
+  shop: {
+    surface: 1, // 2 | 3 | 4
+    id: 'facebook_store_name'
+  }, 
+  hasMediaAttachment: true, // or false
+  viewOnce: true
+})
+```
+
+```javascript
+// Headers Document
+await sock.sendMessage(jid, {
+  document: { 
+    url: 'https://www.example.com/document.pdf' 
+  }, 
+  mimetype: 'application/pdf', 
+  jpegThumbnail: await sock.resize('https://www.example.com/thumbnail.jpg', 320, 320), 
+  caption: 'Here is body message',
+  title: 'Here is title',
+  subtitle: 'Here is subtitle', 
+  footer: '© WhatsApp Baileys',
+  shop: {
+    surface: 1, // 2 | 3 | 4
+    id: 'facebook_store_name'
+  }, 
+  hasMediaAttachment: false, // or true, 
+  viewOnce: true
+})
+```
+
+```javascript
+// Headers Location
+await sock.sendMessage(jid, { 
+  location: {
+    degressLatitude: -0, 
+    degressLongitude: 0,
+    name: 'Example Location'
+  },    
+  caption: 'Here is body message',
+  title: 'Here is title', 
+  subtitle: 'Here is subtitle', 
+  footer: '© WhatsApp Baileys',
+  shop: {
+    surface: 1, // 2 | 3 | 4
+    id: 'facebook_store_name'
+  }, 
+  hasMediaAttachment: false, // or true
+  viewOnce: true
+})
+```
+
+```javascript
+// Headers Product
+await sock.sendMessage(jid, {
+  product: {
+    productImage: { 
+      url: 'https://www.example.com/product.jpg'
+    },
+    productId: '23942543532047956', // catalog business ID
+    title: 'Example Product',
+    description: 'Example Product Description',
+    currencyCode: 'IDR',
+    priceAmount1000: '283xxx',
+    retailerId: 'ExampleRetailer',
+    url: 'https://www.example.com/product',
+    productImageCount: 1
+  },
+  businessOwnerJid: '628xxx@s.whatsapp.net',
+  caption: 'Here is body message',
+  title: 'Here is title',
+  subtitle: 'Here is subtitle',
+  footer: '© WhatsApp Baileys',
+  shop: {
+    surface: 1, // 2 | 3 | 4
+    id: 'facebook_store_name'
+  }, 
+  hasMediaAttachment: false, // or true
+  viewOnce: true
+})
+```
+</details>
+
+</details>
+
 <summary><strong>🛍️ Product Message</strong></summary>
 
 ```javascript
