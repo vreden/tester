@@ -655,6 +655,11 @@ await sock.sendAlbumMessage(jid,
 
 <details>
 <summary><strong>Shop Flow Message</strong></summary>
+
+<a href="https://files.catbox.moe/eomocx.jpeg">
+  <img src="https://files.catbox.moe/eomocx.jpeg" alt="Evample Shop Message" width="150">
+</a>
+
 ```javascript
 // Headers Text
 await sock.sendMessage(jid, {      
