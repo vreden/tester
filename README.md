@@ -657,8 +657,8 @@ await sock.sendAlbumMessage(jid,
 <summary><strong>Shop Flow Message</strong></summary>
 
 <div align="center">
-  <img src="https://files.catbox.moe/mq2fqt.png" alt="Example Shop Message" width="450"/>
-  <p>Preview the shop message display, usually used to direct customers to the Facebook page.</td>
+  <img src="https://files.catbox.moe/pdeeq8.png" alt="Example Shop Message" width="450"/>
+  <p>Preview the shop message display, usually used to direct customers to the Facebook page or account.</td>
 </div>
 
 ```javascript
