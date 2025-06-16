@@ -450,12 +450,209 @@ await sock.sendMessage(jid, {
 ```
 </details>
 
+
+<details>
+<summary><strong>💳 Payment Message</strong></summary>
+
+```javascript
+await sock.sendMessage(jid, {
+  payment: {
+    note: 'Here is payment message',
+    currency: 'USD', // optional 
+    offset: 0, // optional
+    amount: '100000', // optional
+    expiry: 0, // optional
+    from: '628xxx@s.whatsapp.net', // optional
+    image: { // optional
+      placeholderArgb: "your_background", // optional
+      textArgb: "your_text",  // optional
+      subtextArgb: "your_subtext" // optional
+    }
+  }
+})
+```
+</details>
+
+
+<details>
+<summary><strong>📜 Payment Invite Message</strong></summary>
+
+```javascript
+await sock.sendMessage(jid, { 
+  paymentInvite: {
+    type: 1, // 1 || 2 || 3
+    expiry: 0 
+  }   
+})
+```
+</details>
+
+
+<details>
+<summary><strong>👤 Channel Admin Invite</strong></summary>
+
+```javascript
+await sock.sendMessage(jid, {
+  adminInvite: {
+    jid: '172xxx@newsletter',
+    name: 'Newsletter Title', 
+    caption: 'Undangan admin channel saya',
+    expiration: 86400,
+    jpegThumbnail: fs.readFileSync('preview.jpg') // optional
+  }
+})
+```
+</details>
+
+
+<details>
+<summary><strong>👥 Group Invite Message</strong></summary>
+
+```javascript
+await sock.sendMessage(jid, {
+  groupInvite: {
+    jid: '123xxx@g.us',
+    name: 'Group Name!', 
+    caption: 'Invitation To Join My Whatsapp Group',
+    code: 'xYz3yAtf...', // code invite link
+    expiration: 86400,
+    jpegThumbnail: fs.readFileSync('preview.jpg') // optional            
+  }
+})
+```
+</details>
+
+<details>
+<summary><strong>🔢 Phone Number Message</strong></summary>
+
+```javascript
+// Request phone number
+await sock.sendMessage(jid, {
+  requestPhoneNumber: {}
+})
+```
+```javascript
+// Share phone number
+await sock.sendMessage(jid, {
+  sharePhoneNumber: {}
+})
+```
+</details>
+
+<details>
+<summary><strong>↪️  Reply Button Message</strong></summary>
+
+```javascript
+// Reply List Message
+await sock.sendMessage(jid, {
+  buttonReply: {
+    name: 'Hii',
+    description: 'description', 
+    rowId: 'ID'
+  }, 
+  type: 'list'
+})
+```
+
+```javascript
+// Reply Button Message
+await sock.sendMessage(jid, {
+  buttonReply: {
+    displayText: 'Hii', 
+    id: 'ID'
+  }, 
+  type: 'plain'
+})
+```
+
+```javascript
+// Reply Template Message
+await sock.sendMessage(jid, {
+  buttonReply: {
+    displayText: 'Hii',
+    id: 'ID',
+    index: 1 // number id button reply
+  }, 
+  type: 'template'
+})
+```
+
+```javascript
+// Reply Interactive Message
+await sock.sendMessage(jid, {
+  buttonReply: {
+    body: 'Hii', 
+    nativeFlows: {
+      name: 'menu_options', 
+      paramsJson: JSON.stringify({ id: 'ID', description: 'description' }) 
+      version: 1 // 2 | 3
+    }
+  }, 
+  type: 'interactive'
+})
+```
+</details>
+
+<details>
+<summary><strong>#️⃣ Status Mentions Message</strong></summary>
+
+```javascript
+await sock.sendStatusMentions(jid, {
+  image: {
+    url: 'https://example.com/image.jpg'
+  }, 
+  caption: 'Nice day!'
+})
+```
+</details>
+
+<details>
+<summary><strong>📸 Album Message</strong></summary>
+
+```javascript
+await sock.sendAlbumMessage(jid,
+  [{
+    image: { url: 'https://example.com/image.jpg' },
+    caption: 'Hello World'
+  },
+  {
+    image: fs.readFileSync('image.jpg'), 
+    caption: 'Hello World'
+  },
+  {
+    video: { url: 'https://example.com/video.mp4' },
+    caption: 'Hello World'
+  },
+  {
+    video: fs.readFileSync('video.mp4'),
+    caption: 'Hello World'
+  }],
+{ quoted: message, delay: 3000 })
+```
+</details>
+
+<details>
+<summary><strong>🛍️ Product Message</strong></summary>
+
+```javascript
+await sock.sendMessage(jid, {
+  product: {
+    productId: '123',
+    title: 'Cool T-Shirt',
+    description: '100% cotton',
+    price: 1999, // In cents (e.g., $19.99)
+    currencyCode: 'USD',
+    productImage: fs.readFileSync('shirt.jpg')
+  }
+});
+```
+</details>
+
 <details>
 <summary><strong>🎭 Buttons Messages</strong></summary>
 
 <br>
 
-> [!IMPORTANT]
 > This message button may not work if WhatsApp prohibits the free and open use of the message button. Use a WhatsApp partner if you still want to use the message button.
 
 <details>
