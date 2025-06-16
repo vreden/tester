@@ -651,8 +651,6 @@ await sock.sendAlbumMessage(jid,
 <details>
 <summary><strong>👨‍💻 Interactive Message</strong></summary>
 
-> ⚠️ **WARNING**
-<br>
 > This is an interactive chat created based on Proto WhatsApp business data, if the message does not work then there may be a change in the buttonParamsJson structure.
 
 <details>
@@ -782,7 +780,6 @@ await sock.sendMessage(jid, {
 })
 ```
 </details>
-
 </details>
 
 <summary><strong>🛍️ Product Message</strong></summary>
