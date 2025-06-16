@@ -659,7 +659,7 @@ await sock.sendAlbumMessage(jid,
 <table>
   <tr>
     <td>
-      <img src="https://files.catbox.moe/mq2fqt.png" alt="Example Shop Message" width="500">
+      <img src="https://files.catbox.moe/mq2fqt.png" alt="Example Shop Message" width="700">
     </td>
     <td>
       Preview the shop message display, usually used to direct customers to the Facebook page.
