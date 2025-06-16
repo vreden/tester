@@ -786,6 +786,66 @@ await sock.sendMessage(jid, {
 })
 ```
 </details>
+
+<br>
+
+<details>
+<summary><strong>Carosell Message</strong></summary>
+
+<div align="center">
+  <img src="https://files.catbox.moe/3xtsgb.png" alt="Example Carosell Message" width="450"/>
+  <p>Preview the carosel message display, a scrollable message card that displays various items.</td>
+</div>
+
+```javascript
+await sock.sendMessage(jid, {
+  text: 'Here is body message',
+  title: 'Here is title', 
+  subtile: 'Here is subtitle', 
+  footer: '© WhatsApp baileys',
+  cards: [{
+    image: { url: 'https://www.example.com/image.jpg' }, // or buffer
+    title: 'The title cards',
+    body: 'The body cards',
+    footer: '© WhatsApp',
+    buttons: [{
+      name: 'quick_reply',
+      buttonParamsJson: JSON.stringify({
+        display_text: 'Display Text',
+        id: '123'
+      })
+    },
+    {
+      name: 'cta_url',
+      buttonParamsJson: JSON.stringify({
+        display_text: 'Display Text',
+        url: 'https://www.example.com'
+      })
+    }]
+  },
+  {
+    video: { url: 'https://www.example.com/video.mp4' }, // or buffer
+    title: 'The title cards 2',
+    body: 'The body cards 2',
+    footer: '© WhatsApp',
+    buttons: [{
+      name: 'quick_reply',
+      buttonParamsJson: JSON.stringify({
+        display_text: 'Display Text',
+        id: 'ID'
+      })
+    },
+    {
+      name: 'cta_url',
+      buttonParamsJson: JSON.stringify({
+        display_text: 'Display Text',
+        url: 'https://www.example.com'
+      })
+    }]
+  }]
+})
+```
+</details>
 </details>
 
 <details>
