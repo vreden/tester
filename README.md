@@ -844,6 +844,296 @@ await sock.sendMessage(jid, {
 })
 ```
 </details>
+
+<details>
+<summary><strong>Native Flow Message</strong></summary>
+
+> Native flow messages are used to display various types of button messages, even for flow dialogs. These buttons are easy to use and are often able to accommodate many parameters.
+
+<details>
+<summary><strong>header_type</strong></summary>
+
+```javascript
+// Headers text
+await sock.sendMessage(jid, {
+  text: 'This is body message!',
+  title: 'This is title',
+  subtitle: 'This is subtitle',
+  footer: '© WhatsApp Baileys',
+  interactive: native_flow_button
+})
+```
+
+```javascript
+// Headers image
+await sock.sendMessage(jid, {
+  image: { url: 'https://www.example.com/image.jpg' },
+  caption: 'This is body message!',
+  title: 'This is title',
+  subtitle: 'This is subtitle',
+  footer: '© WhatsApp Baileys',
+  hasMediaAttachment: true,
+  interactive: native_flow_button
+})
+```
+
+```javascript
+// Headers Video
+await sock.sendMessage(jid, {
+  video: { url: 'https://www.example.com/video.mp4' },
+  caption: 'This is body message!',
+  title: 'This is title',
+  subtitle: 'This is subtitle',
+  footer: '© WhatsApp Baileys',
+  hasMediaAttachment: true,
+  interactive: native_flow_button
+})
+```
+
+```javascript
+// Headers Document
+await sock.sendMessage(jid, {
+  document: { url: 'https://www.example.com/document.pdf' },
+  jpegThumbnail: fs.readFileSync('preview.jpg'),
+  mimetype: 'application/pdf',
+  caption: 'This is body message!',
+  title: 'This is title',
+  subtitle: 'This is subtitle',
+  footer: '© WhatsApp Baileys',
+  hasMediaAttachment: true,
+  interactive: native_flow_button
+})
+```
+
+```javascript
+// Headers Location
+await sock.sendMessage(jid, {
+  location: { 
+    degressLatitude: -0,
+    degressLongitude: 0,
+    name: 'Here is name location'
+  },
+  caption: 'This is body message!',
+  title: 'This is title',
+  subtitle: 'This is subtitle',
+  footer: '© WhatsApp Baileys',
+  hasMediaAttachment: true,
+  interactive: native_flow_button
+})
+```
+
+```javascript
+// Headers Product
+await sock.sendMessage(jid, {
+  product: {
+    productImage: { 
+      url: 'https://www.example.com/product.jpg'
+    },
+    productId: '23942543532047956', // catalog business ID
+    title: 'Example Product',
+    description: 'Example Product Description',
+    currencyCode: 'IDR',
+    priceAmount1000: '2000000',
+    retailerId: 'ExampleRetailer',
+    url: 'https://www.example.com/product',
+    productImageCount: 1
+  },
+  businessOwnerJid: '628xxx@s.whatsapp.net',
+  caption: 'This is body message!',
+  title: 'This is title',
+  subtitle: 'This is subtitle',
+  footer: '© WhatsApp Baileys',
+  hasMediaAttachment: true,
+  interactive: native_flow_button
+})
+```
+</details>
+
+<details>
+<summary><strong>native_flow_button</strong></summary>
+
+```javascript
+const native_flow_button = [{
+  name: 'quick_reply',
+  buttonParamsJson: JSON.stringify({
+    display_text: 'Quick Reply',
+    id: '123'
+  })
+}]
+```
+
+```javascript
+const native_flow_button = [{
+  name: 'cta_url',
+  buttonParamsJson: JSON.stringify({
+    display_text: 'Action URL',
+    url: 'https://www.example.com',
+    merchant_url: 'https://www.example.com'
+  })
+}]
+```
+
+```javascript
+const native_flow_button = [{
+  name: 'cta_copy',
+  buttonParamsJson: JSON.stringify({
+    display_text: 'Action Copy',
+    copy_code: '12345678'
+  })
+}]
+```
+
+```javascript
+const native_flow_button = [{
+  name: 'cta_call',
+  buttonParamsJson: JSON.stringify({
+    display_text: 'Action Call',
+    phone_number: '628xxx'
+  })
+}]
+```
+
+```javascript
+const native_flow_button = [{
+  name: 'cta_catalog',
+  buttonParamsJson: JSON.stringify({
+    business_phone_number: '628xxx'
+  })
+}]
+```
+
+```javascript
+const native_flow_button = [{
+  name: 'cta_reminder',
+  buttonParamsJson: JSON.stringify({
+    display_text: 'Action Reminder'
+  })
+}]
+```
+
+```javascript
+const native_flow_button = [{
+  name: 'cta_cancel_reminder',
+  buttonParamsJson: JSON.stringify({
+    display_text: 'Action Unreminder'
+  })
+}]
+```
+
+```javascript
+const native_flow_button = [{
+  name: 'address_message',
+  buttonParamsJson: JSON.stringify({
+    display_text: 'Form Location'
+  })
+}]
+```
+
+```javascript
+const native_flow_button = [{
+  name: 'send_location',
+  buttonParamsJson: JSON.stringify({
+    display_text: 'Send Location'
+  })
+}]
+```
+
+```javascript
+const native_flow_button = [{
+  name: 'open_webview',
+  buttonParamsJson: JSON.stringify({
+    title: 'URL Web View',
+    link: {
+      in_app_webview: true, // or false
+      url: 'https://www.example.com'
+    }
+  })
+}]
+```
+
+```javascript
+const native_flow_button = [{
+  name: 'mpm',
+  buttonParamsJson: JSON.stringify({
+    product_id: '23942543532047956'
+  })
+}]
+```
+
+```javascript
+const native_flow_button = [{
+  name: 'wa_payment_transaction_details',
+  buttonParamsJson: JSON.stringify({
+    transaction_id: '12345848'
+  })
+}]
+```
+
+```javascript
+const native_flow_button = [{
+  name: 'automated_greeting_message_view_catalog',
+  buttonParamsJson: JSON.stringify({
+    business_phone_number: '628xxx',
+    catalog_product_id: '23942543532047956'
+  })
+}]
+```
+
+```javascript
+const native_flow_button = [{
+  name: 'galaxy_message',
+  buttonParamsJson: JSON.stringify({
+    mode: 'published',
+    flow_message_version: '3',
+    flow_token: '1:1307913409923914:293680f87029f5a13d1ec5e35e718af3',
+    flow_id: '1307913409923914',
+    flow_cta: 'Here is button form',
+    flow_action: 'navigate',
+    flow_action_payload: {
+      screen: 'QUESTION_ONE',
+      params: {
+        user_id: '123456789',
+        referral: 'campaign_xyz'
+      }
+    },
+    flow_metadata: {
+      flow_json_version: '201',
+      data_api_protocol: 'v2',
+      flow_name: 'Lead Qualification [en]',
+      data_api_version: 'v2',
+      categories: ['Lead Generation', 'Sales']
+    }
+  })
+}]
+```
+
+```javascript
+const native_flow_button = [{
+  name: 'single_select',
+  buttonParamsJson: JSON.stringify({
+    title: 'Selection Button',
+    sections: [{
+      title: 'Title 1',
+      highlight_label: 'Highlight label 1',
+      rows: [{
+          header: 'Header 1',
+          title: 'Title 1',
+          description: 'Description 1',
+          id: 'Id 1'
+        },
+        {
+          header: 'Header 2',
+          title: 'Title 2',
+          description: 'Description 2',
+          id: 'Id 2'
+        }
+      ]
+    }]
+  })
+}]
+```
+</details>
+</details>
 </details>
 
 <details>
@@ -871,13 +1161,13 @@ await sock.sendMessage(jid, {
 > This message button may not work if WhatsApp prohibits the free and open use of the message button. Use a WhatsApp partner if you still want to use the message button.
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Headers Type</strong></summary>
+<summary><strong>header_type</strong></summary>
 
 ```javascript
 // Button Headers Text
 await sock.sendMessage(jid, {
   text: 'Choose an option:',
-  buttons: buttonParams,
+  buttons: button_params,
   footer: '© WhatsApp Baileys'
 });
 ```
@@ -887,7 +1177,7 @@ await sock.sendMessage(jid, {
 await sock.sendMessage(jid, {
   image: fs.readFileSync('image.jpg'),
   caption: 'Choose an option:',
-  buttons: buttonParams,
+  buttons: button_params,
   footer: '© WhatsApp Baileys'
 });
 ```
@@ -897,7 +1187,7 @@ await sock.sendMessage(jid, {
 await sock.sendMessage(jid, {
   video: fs.readFileSync('video.mp4'),
   caption: 'Choose an option:',
-  buttons: buttonParams,
+  buttons: button_params,
   footer: '© WhatsApp Baileys'
 });
 ```
@@ -910,18 +1200,18 @@ await sock.sendMessage(jid, {
     degreesLongitude: -122.084
   },
   caption: 'Choose an option:',
-  buttons: buttonParams,
+  buttons: button_params,
   footer: '© WhatsApp Baileys'
 });
 ```
 </details>
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Button Params</strong></summary>
+<summary><strong>button_params</strong></summary>
 
 ```javascript
 // Button Params Default
-const buttonParams = [{
+const button_params = [{
   buttonId: 'id1',
   buttonText: {
     displayText: 'Option 1'
@@ -938,7 +1228,7 @@ const buttonParams = [{
 
 ```javascript
 // Button Params NativeFlow
-const buttonParams = [{
+const button_params = [{
   buttonId: 'id1',
   buttonText: {
     displayText: 'Option 1'
