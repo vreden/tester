@@ -787,13 +787,11 @@ await sock.sendMessage(jid, {
 ```
 </details>
 
-<br>
-
 <details>
 <summary><strong>Carosell Message</strong></summary>
 
 <div align="center">
-  <img src="https://files.catbox.moe/3xtsgb.png" alt="Example Carosell Message" width="450"/>
+  <img src="https://files.catbox.moe/cf3hxd.png" alt="Example Carosell Message" width="450"/>
   <p>Preview the carosel message display, a scrollable message card that displays various items.</td>
 </div>
 
