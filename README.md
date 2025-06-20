@@ -955,14 +955,6 @@ await sock.sendMessage(jid, {
 <table>
   <tr>
     <td>
-      <strong>priview image</strong>
-    </td>
-    <td>
-      <strong>name native flow buttons</strong>
-    </td>
-  </tr>
-  <tr>
-    <td>
       <img src="https://files.catbox.moe/n3wqck.png" alt="Vreden Quick Reply" width="300">
     </td>
     <td>
@@ -975,6 +967,30 @@ await sock.sendMessage(jid, {
     </td>
     <td>
       cta_url
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://files.catbox.moe/8xerq3.png" alt="Vreden CTA Copy" width="300">
+    </td>
+    <td>
+      cta_copy
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://files.catbox.moe/ftvx6v.png" alt="Vreden CTA Call" width="300">
+    </td>
+    <td>
+      cta_call
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://files.catbox.moe/hpswwj.png" alt="Vreden CTA Catalog" width="300">
+    </td>
+    <td>
+      cta_catalog
     </td>
   </tr>
 </table>
