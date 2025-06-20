@@ -971,7 +971,7 @@ await sock.sendMessage(jid, {
   </tr>
   <tr>
     <td>
-      <img src="https://files.catbox.moe/8xerq3.png" alt="Vreden CTA Copy" width="300">
+      <img src="https://files.catbox.moe/8vgfcw.png" alt="Vreden CTA Copy" width="300">
     </td>
     <td>
       cta_copy
