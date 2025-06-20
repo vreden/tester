@@ -952,6 +952,11 @@ await sock.sendMessage(jid, {
 <details>
 <summary><strong>native_flow_button</strong></summary>
 
+<div align="center">
+  <img src="https://files.catbox.moe/n3wqck.png" alt="Example Carosell Message" width="450"/>
+  <p>Quick Reply Buttons.</td>
+</div>
+
 ```javascript
 const native_flow_button = [{
   name: 'quick_reply',
@@ -961,6 +966,12 @@ const native_flow_button = [{
   })
 }]
 ```
+--
+
+<div align="center">
+  <img src="https://files.catbox.moe/0bbxj0.png" alt="Example Carosell Message" width="450"/>
+  <p>Call To Action URL Buttons.</td>
+</div>
 
 ```javascript
 const native_flow_button = [{
