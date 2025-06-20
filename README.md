@@ -955,6 +955,14 @@ await sock.sendMessage(jid, {
 <table>
   <tr>
     <td>
+      <strong>priview image</strong>
+    </td>
+    <td>
+      <strong>name native flow buttons</strong>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <img src="https://files.catbox.moe/n3wqck.png" alt="Vreden Quick Reply" width="400">
     </td>
     <td>
