@@ -963,7 +963,7 @@ await sock.sendMessage(jid, {
   </tr>
   <tr>
     <td>
-      <img src="https://files.catbox.moe/n3wqck.png" alt="Vreden Quick Reply" width="400">
+      <img src="https://files.catbox.moe/n3wqck.png" alt="Vreden Quick Reply" width="300">
     </td>
     <td>
       quick_reply
@@ -971,7 +971,7 @@ await sock.sendMessage(jid, {
   </tr>
   <tr>
     <td>
-      <img src="https://files.catbox.moe/0bbxj0.png" alt="Vreden CTA URL" width="400">
+      <img src="https://files.catbox.moe/0bbxj0.png" alt="Vreden CTA URL" width="300">
     </td>
     <td>
       cta_url
