@@ -955,8 +955,8 @@ await sock.sendMessage(jid, {
 <table border="1">
   <thead>
     <tr>
-      <th>Preview</th>
-      <th>Flow</th>
+      <th>Preview Flow</th>
+      <th>Flow Name</th>
     </tr>
   </thead>
   <tbody>
@@ -985,8 +985,8 @@ const native_flow_button = [{
 <table border="1">
   <thead>
     <tr>
-      <th>Preview</th>
-      <th>Flow</th>
+      <th>Preview Flow</th>
+      <th>Flow Name</th>
     </tr>
   </thead>
   <tbody>
@@ -1016,8 +1016,8 @@ const native_flow_button = [{
 <table border="1">
   <thead>
     <tr>
-      <th>Preview</th>
-      <th>Flow</th>
+      <th>Preview Flow</th>
+      <th>Flow Name</th>
     </tr>
   </thead>
   <tbody>
@@ -1046,8 +1046,8 @@ const native_flow_button = [{
 <table border="1">
   <thead>
     <tr>
-      <th>Preview</th>
-      <th>Flow</th>
+      <th>Preview Flow</th>
+      <th>Flow Name</th>
     </tr>
   </thead>
   <tbody>
@@ -1076,8 +1076,8 @@ const native_flow_button = [{
 <table border="1">
   <thead>
     <tr>
-      <th>Preview</th>
-      <th>Flow</th>
+      <th>Preview Flow</th>
+      <th>Flow Name</th>
     </tr>
   </thead>
   <tbody>
@@ -1105,8 +1105,8 @@ const native_flow_button = [{
 <table border="1">
   <thead>
     <tr>
-      <th>Preview</th>
-      <th>Flow</th>
+      <th>Preview Flow</th>
+      <th>Flow Name</th>
     </tr>
   </thead>
   <tbody>
@@ -1134,8 +1134,8 @@ const native_flow_button = [{
 <table border="1">
   <thead>
     <tr>
-      <th>Preview</th>
-      <th>Flow</th>
+      <th>Preview Flow</th>
+      <th>Flow Name</th>
     </tr>
   </thead>
   <tbody>
@@ -1163,8 +1163,8 @@ const native_flow_button = [{
 <table border="1">
   <thead>
     <tr>
-      <th>Preview</th>
-      <th>Flow</th>
+      <th>Preview Flow</th>
+      <th>Flow Name</th>
     </tr>
   </thead>
   <tbody>
@@ -1192,8 +1192,8 @@ const native_flow_button = [{
 <table border="1">
   <thead>
     <tr>
-      <th>Preview</th>
-      <th>Flow</th>
+      <th>Preview Flow</th>
+      <th>Flow Name</th>
     </tr>
   </thead>
   <tbody>
@@ -1221,8 +1221,8 @@ const native_flow_button = [{
 <table border="1">
   <thead>
     <tr>
-      <th>Preview</th>
-      <th>Flow</th>
+      <th>Preview Flow</th>
+      <th>Flow Name</th>
     </tr>
   </thead>
   <tbody>
@@ -1254,8 +1254,8 @@ const native_flow_button = [{
 <table border="1">
   <thead>
     <tr>
-      <th>Preview</th>
-      <th>Flow</th>
+      <th>Preview Flow</th>
+      <th>Flow Name</th>
     </tr>
   </thead>
   <tbody>
@@ -1283,8 +1283,8 @@ const native_flow_button = [{
 <table border="1">
   <thead>
     <tr>
-      <th>Preview</th>
-      <th>Flow</th>
+      <th>Preview Flow</th>
+      <th>Flow Name</th>
     </tr>
   </thead>
   <tbody>
@@ -1312,8 +1312,8 @@ const native_flow_button = [{
 <table border="1">
   <thead>
     <tr>
-      <th>Preview</th>
-      <th>Flow</th>
+      <th>Preview Flow</th>
+      <th>Flow Name</th>
     </tr>
   </thead>
   <tbody>
@@ -1342,8 +1342,8 @@ const native_flow_button = [{
 <table border="1">
   <thead>
     <tr>
-      <th>Preview</th>
-      <th>Flow</th>
+      <th>Preview Flow</th>
+      <th>Flow Name</th>
     </tr>
   </thead>
   <tbody>
@@ -1390,8 +1390,8 @@ const native_flow_button = [{
 <table border="1">
   <thead>
     <tr>
-      <th>Preview</th>
-      <th>Flow</th>
+      <th>Preview Flow</th>
+      <th>Flow Name</th>
     </tr>
   </thead>
   <tbody>
